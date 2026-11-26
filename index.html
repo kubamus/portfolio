@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{name}}, {{role}}</title>
+    <meta name="description" content="{{description}}" />
+    <meta name="author" content="{{name}}" />
+    <meta name="theme-color" content="#f2c39c" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{name}}, {{role}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      document.documentElement.classList.add('js');
+      setTimeout(function () {
+        document.documentElement.classList.add('is-loaded');
+      }, 4000);
+    </script>
+    <style>
+      html.js:not(.is-loaded) body {
+        margin: 0;
+        background: #f2c39c;
+      }
+      html.js:not(.is-loaded) .stage__canvas,
+      html.js:not(.is-loaded) .chrome,
+      html.js:not(.is-loaded) .scalebar,
+      html.js:not(.is-loaded) .skip-link,
+      html.js:not(.is-loaded) main {
+        opacity: 0;
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#work" data-nav="work">Skip to work</a>
+
+    <div class="stage" aria-hidden="true">
+      <canvas class="stage__canvas"></canvas>
+      <div class="stage__poster"></div>
+      <div class="stage__grain"></div>
+    </div>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="scrim scrim--top" aria-hidden="true"></div>
+    <div class="scrim scrim--bottom" aria-hidden="true"></div>
+
+    <header class="chrome">
+      <a class="chrome__mark" href="#top" data-nav="top">
+        <span class="chrome__mark-name">{{name}}</span>
+        <span class="chrome__mark-role">{{role}}</span>
+      </a>
+      <nav class="chrome__nav" aria-label="Primary">
+        <ul>
+          <li><a href="#structure" data-nav="structure" data-section="structure">About</a></li>
+          <li><a href="#work" data-nav="work" data-section="work">Work</a></li>
+          <li><a href="#coda" data-nav="coda" data-section="coda">Contact</a></li>
+          <li>
+            <a href="{{linkedinUrl}}" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+          </li>
+          <li>
+            <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+          </li>
+          <li><a href="mailto:{{email}}">Email</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="scalebar" aria-hidden="true">
+      <div class="scalebar__readout">
+        <span class="scalebar__value">1 mm</span>
+        <span class="scalebar__name">Intro</span>
+      </div>
+      <div class="scalebar__bar"><i></i></div>
+    </div>
+
+    <main id="main">
+      <!-- ── Surface ─────────────────────────────────────────── -->
+      <section id="top" class="act act--surface" data-act data-chapter="surface" aria-labelledby="name">
+        <div class="surface">
+          <h1 id="name" class="surface__name">
+            <span class="surface__given" data-split="chars">{{givenName}}</span>
+            <span class="surface__family" data-split="chars">{{familyName}}</span>
+          </h1>
+          <div class="surface__intro">
+            <p class="surface__role">{{role}} in {{location}}. {{availability}}.</p>
+            <p class="surface__statement">I build web, mobile, desktop, and custom&nbsp;software.</p>
+            <p class="surface__actions">
+              <a href="mailto:{{email}}">Email me</a>
+              <a href="{{linkedinUrl}}" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+              <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+            </p>
+          </div>
+          <p class="surface__hint">
+            <span class="surface__hint-brush">Move across the wing to brush the scales.</span>
+            <span class="surface__hint-scroll">Scroll down</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Magnification ───────────────────────────────────── -->
+      <section id="magnify" class="act act--magnify" data-act data-chapter="magnify" aria-labelledby="magnify-title">
+        <div class="act__sticky">
+          <div class="magnify">
+            <div class="magnify__scrim" aria-hidden="true"></div>
+            <h2 id="magnify-title" class="magnify__title" data-split="words">How I build software.</h2>
+            <p class="magnify__text" data-split="words">
+              I use AI coding agents in my daily development work. I orchestrate them across
+              multiple model providers with custom skills and repeatable workflows. I direct
+              the architecture and review every change before it ships.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Structure (about) ───────────────────────────────── -->
+      <section id="structure" class="act act--structure" data-act data-chapter="structure" aria-labelledby="structure-title">
+        <div class="act__sticky">
+          <div class="structure">
+            <h2 id="structure-title" class="structure__title">
+              <span class="structure__line" data-split="words">I pick the stack</span>
+              <span class="structure__line" data-split="words">to fit the&nbsp;problem.</span>
+            </h2>
+            <p class="structure__col structure__col--a" data-split="words">
+              I do not limit my work to one tech stack. I use AI agents across multiple model
+              providers to build web apps, mobile apps, desktop apps, and custom tools for
+              specific problems.
+            </p>
+            <p class="structure__col structure__col--b" data-split="words">
+              I write custom skills and workflows so AI agents produce code I can verify and
+              ship. I am in school in Poland, so I take remote part-time roles and freelance
+              gigs instead of full-time positions.
+            </p>
+            <div class="structure__notes" aria-hidden="true">
+              <span class="note note--ridge">ridge</span>
+              <span class="note note--lamella">lamellae, about 200&nbsp;nm apart</span>
+            </div>
+            <dl class="structure__block">
+              <div class="structure__block-title"><dt>Developer</dt><dd>{{name}}</dd></div>
+              <div><dt>Builds</dt><dd>Web, mobile, desktop, and custom apps</dd></div>
+              <div><dt>How</dt><dd>AI agents, multiple model providers, skills, workflows</dd></div>
+              <div><dt>Availability</dt><dd>{{availability}}</dd></div>
+              <div><dt>Location</dt><dd>{{location}}</dd></div>
+              <div>
+                <dt>Contact</dt>
+                <dd class="structure__links">
+                  <a href="mailto:{{email}}">Email</a>
+                  <a href="{{linkedinUrl}}" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only">, opens in a new tab</span></a>
+                  <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only">, opens in a new tab</span></a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── The turn ────────────────────────────────────────── -->
+      <section id="turn" class="act act--turn" data-act data-chapter="turn" aria-labelledby="turn-title">
+        <div class="act__sticky">
+          <div class="turn">
+            <h2 id="turn-title" class="turn__title" data-split="chars">I build in the open.</h2>
+            <p class="turn__text" data-split="words">
+              Selected projects go below as I add them. Until then, you can inspect my public
+              repositories on GitHub or email me about a role or gig.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Work (gallery) ──────────────────────────────────── -->
+      <section id="work" class="act act--work" data-act data-chapter="work" aria-labelledby="work-title">
+        <header class="work__head">
+          <h2 id="work-title" class="work__title" data-split="words" tabindex="-1">Work</h2>
+          <div class="work__intro">
+            <p class="work__lede">Selected projects appear here as I publish them.</p>
+            <p class="work__count" data-count aria-live="polite"></p>
+          </div>
+        </header>
+        <div class="work__field" data-gallery>
+          <noscript>
+            <p class="work__noscript">
+              The project gallery requires JavaScript. You can view my public code on
+              <a href="{{githubUrl}}">GitHub</a>.
+            </p>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- ── Coda ─────────────────────────────────────────────── -->
+      <section id="coda" class="act act--coda" data-act data-chapter="coda" aria-labelledby="coda-title">
+        <div class="coda">
+          <h2 id="coda-title" class="coda__title" data-split="words">Get in touch.</h2>
+          <p class="coda__text">
+            I am in school in Poland and available for remote part-time roles and freelance gigs.
+            Send an email with the problem you want solved.
+          </p>
+          <a class="coda__link" href="mailto:{{email}}">
+            <span class="coda__link-handle">{{emailUser}}</span><span class="coda__link-host">@{{emailDomain}}</span>
+          </a>
+          <p class="coda__contact" data-contact>
+            <a href="{{linkedinUrl}}" target="_blank" rel="noopener noreferrer">LinkedIn<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+            <a href="{{githubUrl}}" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&nbsp;↗</span><span class="sr-only">, opens in a new tab</span></a>
+          </p>
+        </div>
+        <footer class="colophon">
+          <p>© {{year}} {{name}}</p>
+          <p>Set in Bodoni Moda and Instrument Sans. Rendered in WebGL.</p>
+          <a href="#top" data-nav="top">Back to top</a>
+        </footer>
+      </section>
+    </main>
+
+    <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+      <div class="sheet__scroll" data-lenis-prevent>
+        <div class="sheet__layout">
+          <div class="sheet__media" data-sheet-media></div>
+          <div class="sheet__text">
+            <p class="sheet__meta" data-sheet-meta></p>
+            <h2 id="sheet-title" class="sheet__title" data-sheet-title></h2>
+            <div class="sheet__desc" data-sheet-desc></div>
+            <dl class="label sheet__facts" data-sheet-facts></dl>
+            <p class="sheet__links" data-sheet-links></p>
+          </div>
+        </div>
+      </div>
+      <nav class="sheet__nav" aria-label="Project navigation">
+        <button type="button" class="sheet__btn" data-sheet-prev>← Previous</button>
+        <span class="sheet__pos" data-sheet-pos></span>
+        <button type="button" class="sheet__btn" data-sheet-next>Next →</button>
+        <button type="button" class="sheet__btn sheet__close" data-sheet-close>Close <kbd>Esc</kbd></button>
+      </nav>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

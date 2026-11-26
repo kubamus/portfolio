@@ -1,0 +1,84 @@
+/* ─── Without WebGL (desktop): frames rendered from the real scene stand in for it ─ */
+/* Backgrounds only download when .no-webgl applies; gradients paint until they arrive. */
+.no-webgl .stage__canvas { display: none; }
+.no-webgl .stage__poster { display: block; background-color: #2a1a12; transition: background-image 0.6s ease; }
+.no-webgl[data-chapter='surface'] .stage__poster,
+.no-webgl:not([data-chapter]) .stage__poster {
+  background-image: url('/posters/surface.jpg'), linear-gradient(180deg, #f3e1c8 0%, #f2c39c 34%, #9c4a2a 55%, #2a120c 100%);
+}
+.no-webgl[data-chapter='magnify'] .stage__poster {
+  background-image: url('/posters/magnify.jpg'), linear-gradient(160deg, #0a2a94, #1a63f0 50%, #0a0a10);
+}
+.no-webgl[data-chapter='structure'] .stage__poster {
+  background-image: url('/posters/structure.jpg'), linear-gradient(180deg, #f5f1ea 45%, #1b3fc4 50%, #0b1a4a);
+}
+.no-webgl[data-chapter='turn'] .stage__poster {
+  background-image: url('/posters/turn.jpg'), linear-gradient(180deg, #3a2317, #24170f);
+}
+.no-webgl[data-chapter='work'] .stage__poster {
+  background-image: linear-gradient(rgba(24, 15, 10, 0.55), rgba(24, 15, 10, 0.55)), url('/posters/work.jpg'), linear-gradient(180deg, #3a2317, #24170f);
+}
+.no-webgl[data-chapter='coda'] .stage__poster {
+  background-image: url('/posters/coda.jpg'), linear-gradient(180deg, #f0dcc9, #f4c49c 45%, #cf5c2c 60%, #1a0e0a);
+}
+
+/* ─── Narrow windows: a light, readable page — no stage, no choreography ─ */
+@media (max-width: 959px), (max-height: 539px) {
+  :root {
+    --fs-giant: clamp(64px, 19vw, 160px);
+    --fs-display: clamp(44px, 11vw, 96px);
+    --fs-title: clamp(32px, 8vw, 64px);
+    --fs-lead: 19px;
+    --fs-body: 16px;
+    --fs-small: 13px;
+    --gutter: 20px;
+  }
+  body { background: linear-gradient(180deg, #f3e1c8, #f2c39c 30vh, #e9b48a 100vh); background-attachment: scroll; }
+  .stage__canvas { display: none; }
+  .stage__poster { display: block; opacity: 0.0; }
+  .scalebar, .surface__hint, .chrome__mark { display: none; }
+  .chrome { position: absolute; padding: 18px var(--gutter); }
+  .chrome__nav ul { gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+
+  .act, .act--surface, .act--magnify, .act--structure, .act--turn, .act--coda { height: auto; }
+  .act__sticky, .coda { position: static; height: auto; overflow: visible; }
+  .surface, .magnify, .structure, .turn { position: static; }
+  .surface__name, .surface__given, .surface__family, .surface__intro, .magnify__title, .magnify__text,
+  .structure__title, .structure__col, .structure__block, .turn__title, .turn__text,
+  .coda__title, .coda__text, .coda__link, .coda__contact, .colophon {
+    position: static;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+  .act { padding: 10vh var(--gutter) 6vh; color: var(--ink); }
+  .act--surface { padding-top: 22vh; min-height: 92vh; }
+  .surface__name { display: grid; color: var(--ink); }
+  .surface__family { color: var(--ink); }
+  .surface__intro { margin-top: 6vh; max-width: 32em; }
+  .magnify, .structure, .turn, .act--work, .coda, .colophon { color: var(--ink); }
+  .magnify__scrim { display: none; }
+  .magnify__title, .magnify__text { text-shadow: none; }
+  .magnify__title, .turn__title, .coda__title { font-size: var(--fs-display); }
+  .structure__title { font-size: var(--fs-title); }
+  .magnify__text, .structure__col, .turn__text, .coda__text { margin-top: 1.2em; font-size: var(--fs-lead); }
+  .structure { display: block; padding: 0; }
+  .structure > .structure__title, .structure > .structure__col { padding: 0; }
+  .structure__notes { display: none; }
+  .structure__block { margin-top: 2em; }
+  .flipchar__under { display: none; }
+  .turn__title { white-space: normal; }
+  .coda { display: block; padding: 0; }
+  .work__head { grid-template-columns: 1fr; padding: 4vh 0 6vh; }
+  .work__field { padding: 0; }
+  .specimens { display: grid; grid-template-columns: 1fr; row-gap: 8vh; }
+  .specimen { grid-column: 1 / -1 !important; margin-top: 0 !important; max-width: 420px; }
+  .empty { color: var(--ink); }
+  .index a { grid-template-columns: 1fr auto; }
+  .index__cell:nth-of-type(n+2) { display: none; }
+  .coda__link { display: inline-flex; flex-wrap: wrap; margin-top: 1em; font-size: clamp(22px, 6.2vw, 48px); color: var(--ink); word-break: break-word; }
+  .coda__contact { margin-top: 1em; color: var(--ink); }
+  .colophon { display: grid; gap: 0.6em; justify-content: start; padding: 12vh 0 0; }
+  .sheet__layout { grid-template-columns: 1fr; }
+  .sheet__text { position: static; padding-top: 4vh; }
+}
